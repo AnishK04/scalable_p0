@@ -1,7 +1,7 @@
 version: "3"
 services:
   dbdb:
-    image: mariadb
+    image: mariadb:10.9.8
     networks:
       - ums-back-office
     environment:
@@ -38,9 +38,8 @@ services:
       - backend
     networks:
       - ums-user-facing
-      - ums-back-office
-    # volumes:
-    #   - "./proxy/default.conf:/etc/nginx/conf.d/default.conf"
+    volumes:
+      - "./proxy/default.conf:/etc/nginx/conf.d/default.conf"
 volumes:
   db:
     driver: local
